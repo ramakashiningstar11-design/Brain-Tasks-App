@@ -6,9 +6,6 @@ phases:
       nodejs: 18
   pre_build:
     commands:
-      - echo Installing dependencies...
-      - npm install
-      - npm run build
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 823634231890.dkr.ecr.ap-south-1.amazonaws.com
   build:
@@ -18,9 +15,9 @@ phases:
       - docker tag brain-tasks-app:latest 823634231890.dkr.ecr.ap-south-1.amazonaws.com/brain-tasks-app:latest
   post_build:
     commands:
-      - echo Pushing Docker image to ECR...
+      - echo Pushing Docker image...
       - docker push 823634231890.dkr.ecr.ap-south-1.amazonaws.com/brain-tasks-app:latest
+
 artifacts:
   files:
     - '**/*'
-
