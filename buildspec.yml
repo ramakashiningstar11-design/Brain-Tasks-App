@@ -20,7 +20,4 @@ phases:
 
 artifacts:
   files:
-    - Task-1/*.yml
-    - appspec.yml
-    - deploy.sh
-    - dist/**
+    - '**/*'
